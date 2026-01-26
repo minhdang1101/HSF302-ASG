@@ -20,10 +20,27 @@ public class User {
     @Column(name = "email", nullable = false, unique = true, length = 100)
     private String email;
 
+    @Column(nullable = false)
+    private String role;
+
+    @Column(nullable = false)
+    private String status;
+
+    private String password;
+
+    @Column(name = "reset_token")
+    private String resetToken;
+
+    @Column(name = "avatar")
+    private String avatar;
+
     @Column(name="created_on", nullable = false)
     private LocalDateTime createdOn;
 
-    public User() {}
+    public User() {
+        this.createdOn = LocalDateTime.now();
+        this.status = "ACTIVE";
+    }
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -35,4 +52,31 @@ public class User {
     public void setEmail(String email) { this.email = email; }
     public LocalDateTime getCreatedOn() { return createdOn; }
     public void setCreatedOn(LocalDateTime createdOn) { this.createdOn = createdOn; }
+
+    public String getResetToken() {
+        return resetToken;
+    }
+
+    public void setResetToken(String resetToken) {
+        this.resetToken = resetToken;
+    }
+
+
+    public void setPassword(String newPassword) {
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+
+
 }

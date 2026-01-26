@@ -8,10 +8,29 @@
   <name>spring-mvc-jsp-demo Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
+
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-webmvc</artifactId>
-      <version>6.1.1</version>
+      <version>6.1.2</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>6.1.2</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-orm</artifactId>
+      <version>6.1.2</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-jpa</artifactId>
+      <version>3.2.1</version>
     </dependency>
 
     <dependency>
@@ -33,7 +52,6 @@
       <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
       <version>3.0.0</version>
     </dependency>
-
     <dependency>
       <groupId>org.glassfish.web</groupId>
       <artifactId>jakarta.servlet.jsp.jstl</artifactId>
@@ -45,10 +63,12 @@
       <artifactId>jakarta.persistence-api</artifactId>
       <version>3.2.0</version>
     </dependency>
+
     <dependency>
       <groupId>org.hibernate.orm</groupId>
       <artifactId>hibernate-core</artifactId>
-      <version>6.4.0.Final</version> </dependency>
+      <version>6.4.4.Final</version>
+    </dependency>
 
     <dependency>
       <groupId>org.postgresql</groupId>
@@ -61,6 +81,7 @@
       <artifactId>spring-orm</artifactId>
       <version>6.1.1</version> </dependency>
   </dependencies>
+
   <build>
     <finalName>SpringMVCDemo</finalName>
     <plugins>
