@@ -19,4 +19,14 @@ public class WebConfig implements WebMvcConfigurer {
         resolver.setSuffix(".jsp");
         return resolver;
     }
+
+    @Override
+    public void addResourceHandlers(org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+    }
+
+    @Override
+    public void addViewControllers(org.springframework.web.servlet.config.annotation.ViewControllerRegistry registry) {
+        registry.addViewController("/user/profile").setViewName("user/profile");
+    }
 }
