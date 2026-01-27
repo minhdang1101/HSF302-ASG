@@ -27,6 +27,35 @@ public class BookRepository {
         }
     }
 
+    public Book addBook(Book book) {
+        try (EntityManager em = emf.createEntityManager()) {
+            em.getTransaction().begin();
+            em.persist(book);
+            em.getTransaction().commit();
+            return book;
+        }
+    }
+
+    public Book updateBook(Book book) {
+        try (EntityManager em = emf.createEntityManager()) {
+            em.getTransaction().begin();
+            em.merge(book);
+            em.getTransaction().commit();
+            return book;
+        }
+    }
+
+    public void deleteBook(int id) {
+        try (EntityManager em = emf.createEntityManager()) {
+            em.getTransaction().begin();
+            Book book = em.find(Book.class, id);
+            if (book != null) {
+                em.remove(book);
+            }
+            em.getTransaction().commit();
+        }
+    }
+
     public List<Book> searchBooks(String keyword) {
         try (EntityManager em = emf.createEntityManager()) {
             String jpql = "SELECT b FROM Book b WHERE LOWER(b.bookName) LIKE LOWER(:kw)";

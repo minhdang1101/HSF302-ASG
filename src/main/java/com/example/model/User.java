@@ -40,6 +40,7 @@ public class User {
     public User() {
         this.createdOn = LocalDateTime.now();
         this.status = "ACTIVE";
+        this.role = "USER";
     }
 
     public Long getId() { return id; }
@@ -61,8 +62,17 @@ public class User {
         this.resetToken = resetToken;
     }
 
+    public String getRole() {
+        return role;
+    }
 
-    public void setPassword(String newPassword) {
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getAvatar() {

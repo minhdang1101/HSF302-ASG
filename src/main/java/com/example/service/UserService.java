@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.example.util.TokenUtil;
 
 @Service
+@org.springframework.transaction.annotation.Transactional
 public class UserService {
 
     private final UserRepository userRepository;
@@ -21,7 +22,11 @@ public class UserService {
     }
 
     public void saveUser(User user) {
-        userRepository.save(user);
+        if (user.getId() != null) {
+            userRepository.update(user);
+        } else {
+            userRepository.save(user);
+        }
     }
 
     public User getUserById(Long id) {
@@ -39,7 +44,7 @@ public class UserService {
         String token = TokenUtil.generateToken();
         userRepository.updateResetToken(user.getId(), token);
 
-        return token; // thực tế sẽ gửi email
+        return token;
     }
 
     // Reset mật khẩu
@@ -61,5 +66,27 @@ public class UserService {
         return userRepository.changePassword(userId, oldPass, newPass);
     }
 
+
+    // Đăng ký
+    public User register(User user) {
+        if (userRepository.findByUsername(user.getUsername()) != null) {
+            return null;
+        }
+        if (userRepository.findByEmail(user.getEmail()) != null) {
+            return null;
+        }
+        user.setId(null);
+        userRepository.save(user);
+        return user;
+    }
+
+    // Đăng nhập
+    public User login(String username, String password) {
+        User user = userRepository.findByUsername(username);
+        if (user != null && user.getPassword().equals(password)) {
+            return user;
+        }
+        return null;
+    }
 
 }

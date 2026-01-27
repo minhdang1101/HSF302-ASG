@@ -1,0 +1,288 @@
+/* =========================================
+   1. GLOBAL STYLES & BACKGROUND
+   ========================================= */
+body {
+    font-family: 'Poppins', sans-serif;
+    /* Nền Gradient chuyển động */
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    /* Căn giữa toàn màn hình */
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* =========================================
+   2. AUTH CARD (GLASSMORPHISM)
+   ========================================= */
+.auth-wrapper {
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.auth-card {
+    /* Hiệu ứng kính mờ chuẩn */
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+    color: white;
+
+    /* Animation hiện lên */
+    transform: translateY(30px);
+    opacity: 0;
+    animation: fadeInUp 0.8s forwards;
+}
+
+.auth-header h3 {
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+/* =========================================
+   3. INPUT FIELDS (FIX LỖI TRẮNG)
+   ========================================= */
+/* Mặc định trong suốt */
+.form-floating>.form-control {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #fff !important;
+    border-radius: 10px;
+}
+
+/* Khi bấm vào (Focus) - Giữ nguyên trong suốt, không bị trắng */
+.form-floating>.form-control:focus {
+    background: rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2) !important;
+    border-color: #fff !important;
+    color: #fff !important;
+}
+
+.form-floating>label {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px rgba(255, 255, 255, 0.1) inset !important;
+}
+
+/* =========================================
+   4. BUTTONS & LINKS
+   ========================================= */
+.btn-login {
+    background: linear-gradient(45deg, #FF512F 0%, #DD2476 100%);
+    border: none;
+    border-radius: 50px;
+    padding: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(221, 36, 118, 0.4);
+    color: white;
+}
+
+.btn-login:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(221, 36, 118, 0.6);
+    background: linear-gradient(45deg, #DD2476 0%, #FF512F 100%);
+    color: white;
+}
+
+.forgot-pass {
+    color: rgba(255, 255, 255, 0.9);
+    transition: color 0.3s;
+}
+
+.forgot-pass:hover {
+    color: #fff;
+    text-decoration: underline !important;
+}
+
+.signup-link a {
+    color: #fff;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+/* =========================================
+   5. ANIMATIONS & ALERTS
+   ========================================= */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.alert {
+    border-radius: 10px;
+    border: none;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.alert-danger {
+    border-left: 5px solid #dc3545;
+}
+
+.alert-success {
+    border-left: 5px solid #198754;
+}
+
+/* =========================================
+   6. PROFILE STYLES (Giữ lại cho trang Profile)
+   ========================================= */
+.profile-header-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.profile-cover {
+    height: 150px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.profile-avatar-container {
+    position: relative;
+    margin-top: -75px;
+    text-align: center;
+}
+
+.profile-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid white;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+}
+
+/* =========================================
+   7. BOOK CARD MODERN STYLES
+   ========================================= */
+.book-card {
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 16px;
+    background: #fff;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    overflow: hidden;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    border-color: transparent;
+}
+
+/* Khung ảnh cố định chiều cao - Chìa khóa chống vỡ giao diện */
+.book-img-wrapper {
+    height: 300px;
+    /* Chiều cao cố định cho khung ảnh */
+    width: 100%;
+    background-color: #f8f9fa;
+    /* Màu nền xám nhẹ nếu ảnh trong suốt */
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.book-img-wrapper img {
+    max-height: 100%;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    /* Giữ nguyên tỉ lệ ảnh, không bị méo */
+    transition: transform 0.5s ease;
+    padding: 10px;
+    /* Khoảng hở để ảnh không dính sát lề */
+}
+
+.book-card:hover .book-img-wrapper img {
+    transform: scale(1.08);
+    /* Phóng to nhẹ khi di chuột */
+}
+
+/* Badge đánh giá */
+.rating-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(4px);
+    padding: 5px 10px;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #333;
+    z-index: 2;
+}
+
+/* Cắt tên sách nếu quá 2 dòng */
+.book-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 5px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    /* Giới hạn 2 dòng */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 3.2rem;
+    /* Chiều cao cố định cho tên sách */
+    line-height: 1.4;
+}
+
+.book-author {
+    font-size: 0.9rem;
+    color: #95a5a6;
+    margin-bottom: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.price-text {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #2c3e50;
+    /* Hoặc màu chủ đạo của web */
+    letter-spacing: -0.5px;
+}

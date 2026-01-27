@@ -17,17 +17,17 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan(basePackages = "com.example")
+@ComponentScan(basePackages = {"com.example.service", "com.example.repository", "com.example.model"})
 @EnableJpaRepositories(basePackages = "com.example.repository")
 public class AppConfig {
 
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource ds = new DriverManagerDataSource();
-        ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        ds.setUrl("jdbc:mysql://localhost:3306/ebook?useSSL=false&serverTimezone=UTC");
-        ds.setUsername("root");
-        ds.setPassword("1234");
+        ds.setDriverClassName("org.postgresql.Driver");
+        ds.setUrl("jdbc:postgresql://localhost:5432/hsf302_demo");
+        ds.setUsername("postgres");
+        ds.setPassword("123456");
         return ds;
     }
 
@@ -40,6 +40,7 @@ public class AppConfig {
         emf.setPackagesToScan("com.example.model");
         emf.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         emf.setJpaProperties(hibernateProperties());
+        emf.setEntityManagerFactoryInterface(jakarta.persistence.EntityManagerFactory.class);
 
         return emf;
     }
@@ -51,7 +52,7 @@ public class AppConfig {
 
     private Properties hibernateProperties() {
         Properties props = new Properties();
-        props.put("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect");
+        props.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
         props.put("hibernate.show_sql", "true");
         props.put("hibernate.hbm2ddl.auto", "update");
         return props;
