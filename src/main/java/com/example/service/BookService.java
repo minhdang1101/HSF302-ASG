@@ -18,4 +18,14 @@ public class BookService {
         return bookRepository.getBookById(bookId);
     }
 
+    public String getPreviewContent(Long bookId) {
+        Book book = bookRepository.getBookById(bookId);
+
+        String content = book.getBookContent();
+        if (content == null) return "";
+
+        int previewLength = Math.min(content.length(), 800); // ~1–2 trang
+        return content.substring(0, previewLength) + "...";
+    }
+
 }

@@ -24,6 +24,9 @@ public class Book {
     @Column(name = "author")
     private String author;
 
+    @Column(name = "book_content")
+    private String bookContent;
+
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
@@ -76,5 +79,12 @@ public class Book {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public String getBookContent() {
+        return bookContent;
+    }
+    public void setBookContent(String bookContent) {
+        this.bookContent = bookContent;
     }
 }
